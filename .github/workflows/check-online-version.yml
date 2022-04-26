@@ -73,7 +73,7 @@ jobs:
     - uses: convictional/trigger-workflow-and-wait@v1.3.0
       with:
         owner: ${{ github.repository_owner }}
-        repo: pterodactyl-containers
+        repo: wikijs-containers
         github_token: ${{ secrets.GITHUB_TOKEN }}
         workflow_file_name: update.yml
         ref: master

@@ -25,11 +25,20 @@ jobs:
         echo "::set-output name=version::$(cat ./manifest/version.txt)"
         cp ./manifest/images/Dockerfile ./wikijs/dev/build/Dockerfile
 
+    - name: Disable DEV Flag + Set Version
+      working-directory: ./wikijs
+      run: |
+        sudo apt-get install jq -y
+        mv package.json pkg-temp.json
+        jq --arg vs "${{ steps.read_version.outputs.version }}" -r '. + {dev:false, version:$vs}' pkg-temp.json > package.json
+        rm pkg-temp.json
+        cat package.json
+
     - name: Docker meta
       id: docker_meta
       uses: docker/metadata-action@v3
       with:
-        images: ghcr.io/${{ github.repository }}/wikijs
+        images: ghcr.io/${{ github.repository_owner }}/wikijs
         flavor: |
           latest=auto
         tags: |

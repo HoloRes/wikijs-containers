@@ -10,7 +10,7 @@ All issues regarding Wiki.JS are to be reported to https://github.com/requarks/w
 
 *Wiki.js*:
 
-[https://js.wiki/](https://js.wiki/
+[https://js.wiki/](https://js.wiki/)
 
 [https://docs.requarks.io/](https://docs.requarks.io/)
 

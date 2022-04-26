@@ -3,15 +3,6 @@ name: Update Image
 on:
   workflow_dispatch:
 jobs:
-  get_version:
-    name: Get Current Version
-    runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.read_version.outputs.version }}
-    steps:
-    - name: Setup repo
-      uses: actions/checkout@v2
-
   build_push:
     name: Build and Push Container
     runs-on: ubuntu-latest
@@ -32,7 +23,7 @@ jobs:
       id: read_version
       run: |
         echo "::set-output name=version::$(cat ./manifest/version.txt)"
-        cp ./modified-containers/manifest/images/Dockerfile ./dev/build/Dockerfile
+        cp ./manifest/images/Dockerfile ./wikijs/dev/build/Dockerfile
 
     - name: Docker meta
       id: docker_meta

@@ -70,12 +70,4 @@ jobs:
     - get_versions
     - update-version-txt
     steps:
-    - uses: convictional/trigger-workflow-and-wait@v1.3.0
-      with:
-        owner: ${{ github.repository_owner }}
-        repo: wikijs-containers
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        workflow_file_name: update.yml
-        ref: master
-        trigger_workflow: true
-        wait_workflow: false
+    - uses: ./.github/workflows/update.yml

@@ -2,6 +2,7 @@ name: Update Image
 
 on:
   workflow_dispatch:
+  workflow_call:
 jobs:
   build_push:
     name: Build and Push Container

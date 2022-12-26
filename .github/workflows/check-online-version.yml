@@ -65,7 +65,17 @@ jobs:
 
   request_build:
     name: Request Build
+    runs-on: ubuntu-latest
     needs:
     - get_versions
     - update-version-txt
-    uses: ./.github/workflows/update.yml
+    steps:
+    - uses: convictional/trigger-workflow-and-wait@v1.3.0
+      with:
+        owner: ${{ github.repository_owner }}
+        repo: wikijs-containers
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        workflow_file_name: update.yml
+        ref: master
+        trigger_workflow: true
+        wait_workflow: false
